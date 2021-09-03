@@ -1,10 +1,10 @@
-package co.com.poli.movies;
+package co.com.poli.users;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MoviesApplicationTests {
+class UsersApplicationTests {
 
     @Test
     void contextLoads() {

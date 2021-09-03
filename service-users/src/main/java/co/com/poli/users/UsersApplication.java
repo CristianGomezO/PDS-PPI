@@ -1,13 +1,13 @@
-package co.com.poli.movies;
+package co.com.poli.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoviesApplication {
+public class UsersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MoviesApplication.class, args);
+        SpringApplication.run(UsersApplication.class, args);
     }
 
 }

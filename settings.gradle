@@ -1,4 +1,4 @@
 rootProject.name = 'MultiProject-PPI'
 
-include 'service-movies'
+include 'service-users'
 
