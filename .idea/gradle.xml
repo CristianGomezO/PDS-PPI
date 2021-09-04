@@ -9,7 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/service-movies" />
+            <option value="$PROJECT_DIR$/service-users" />
           </set>
         </option>
       </GradleProjectSettings>
