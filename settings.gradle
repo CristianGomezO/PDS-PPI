@@ -1,4 +1,5 @@
 rootProject.name = 'MultiProject-PPI'
 
 include 'service-movies'
+include 'library-commons'
 
