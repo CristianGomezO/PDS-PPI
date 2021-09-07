@@ -5,16 +5,15 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Setter
 @Getter
-@Entity
 @Table(name = "movies")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class Movie {
 
     @Id
