@@ -1,4 +1,4 @@
 rootProject.name = 'MultiProject-PPI'
 
-include 'service-users'
+include 'service-bookings'
 
