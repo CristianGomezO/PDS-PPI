@@ -9,6 +9,8 @@ dependencies {
     implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     runtimeOnly 'com.h2database:h2'
 
     implementation project(':library-commons')
