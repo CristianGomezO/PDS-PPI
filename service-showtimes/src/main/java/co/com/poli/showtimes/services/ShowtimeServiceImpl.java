@@ -36,7 +36,7 @@ public class ShowtimeServiceImpl implements ShowtimeService{
     @Transactional(rollbackFor = Exception.class)
     public void updateShowtime(Showtime newShowtime, Showtime oldShowtime) {
         oldShowtime.setDate(newShowtime.getDate());
-        oldShowtime.setMovies(newShowtime.getMovies());
+        oldShowtime.setMoviesId(newShowtime.getMoviesId());
         showtimeRepository.save(oldShowtime);
     }
 }

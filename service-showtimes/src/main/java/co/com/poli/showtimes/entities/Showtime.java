@@ -4,10 +4,10 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -30,6 +30,18 @@ public class Showtime {
 
     @ElementCollection
     @Column(name = "movies_id")
-    private List<Long> movies;
+    private List<Long> moviesId;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Showtime showtime = (Showtime) o;
+        return Objects.equals(id, showtime.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
