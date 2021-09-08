@@ -2,9 +2,9 @@ package co.com.poli.bookings.controller;
 
 import co.com.poli.bookings.entities.Booking;
 import co.com.poli.bookings.services.BookingService;
-import co.com.poli.bookings.utils.ErrorMessage;
-import co.com.poli.bookings.utils.Response;
-import co.com.poli.bookings.utils.ResponseBuilder;
+import co.com.poli.commons.libraries.FormatMessage;
+import co.com.poli.commons.libraries.Response;
+import co.com.poli.commons.libraries.ResponseBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +23,13 @@ import java.util.stream.Collectors;
 public class BookingController {
 
     private final BookingService bookingService;
-    private final ResponseBuilder builder;
+    private final ResponseBuilder builder = new ResponseBuilder();
+    private final FormatMessage message = new FormatMessage();
 
     @PostMapping
     public Response save(@Valid @RequestBody Booking booking, BindingResult result){
         if(result.hasErrors()){
-            return builder.failed(this.formatMessage((result)));
+            return builder.failed(message.formatMessage((result)));
         }
         bookingService.save(booking);
         return builder.success(booking);
@@ -63,28 +64,4 @@ public class BookingController {
         return builder.success(bookings);
     }
 
-
-
-
-    private String formatMessage(BindingResult result){
-        List<Map<String,String>> errors = result.getFieldErrors().stream()
-                .map(err -> {
-                    Map<String,String> error = new HashMap<>();
-                    error.put(err.getField(),err.getDefaultMessage());
-                    return error;
-                }).collect(Collectors.toList());
-
-        ErrorMessage errorMessage = ErrorMessage.builder()
-                .code("01")
-                .messages(errors)
-                .build();
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = "";
-        try{
-            json = objectMapper.writeValueAsString(errorMessage);
-        }catch (JsonProcessingException e){
-            e.printStackTrace();
-        }
-        return json;
-    }
 }

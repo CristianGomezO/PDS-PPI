@@ -1,22 +1,24 @@
 package co.com.poli.users.entities;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Setter
 @Getter
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class User {
 
     @Id
-    @NotEmpty(message = "El nit/numero no puede ser vacio")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false, unique = true)
     private Long id;
 
 

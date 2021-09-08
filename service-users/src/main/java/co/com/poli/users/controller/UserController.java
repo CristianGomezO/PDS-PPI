@@ -2,9 +2,9 @@ package co.com.poli.users.controller;
 
 import co.com.poli.users.entities.User;
 import co.com.poli.users.services.UserService;
-import co.com.poli.users.utils.ErrorMessage;
-import co.com.poli.users.utils.Response;
-import co.com.poli.users.utils.ResponseBuilder;
+import co.com.poli.commons.libraries.FormatMessage;
+import co.com.poli.commons.libraries.Response;
+import co.com.poli.commons.libraries.ResponseBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +23,13 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final UserService userService;
-    private final ResponseBuilder builder;
+    private final ResponseBuilder builder = new ResponseBuilder();
+    private final FormatMessage message = new FormatMessage();
 
     @PostMapping
     public Response save(@Valid @RequestBody User user, BindingResult result){
         if(result.hasErrors()){
-            return builder.failed(this.formatMessage((result)));
+            return builder.failed(message.formatMessage((result)));
         }
         userService.save(user);
         return builder.success(user);
@@ -62,28 +63,4 @@ public class UserController {
         return builder.success(users);
     }
 
-
-
-
-    private String formatMessage(BindingResult result){
-        List<Map<String,String>> errors = result.getFieldErrors().stream()
-                .map(err -> {
-                    Map<String,String> error = new HashMap<>();
-                    error.put(err.getField(),err.getDefaultMessage());
-                    return error;
-                }).collect(Collectors.toList());
-
-        ErrorMessage errorMessage = ErrorMessage.builder()
-                .code("01")
-                .messages(errors)
-                .build();
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = "";
-        try{
-            json = objectMapper.writeValueAsString(errorMessage);
-        }catch (JsonProcessingException e){
-            e.printStackTrace();
-        }
-        return json;
-    }
 }
