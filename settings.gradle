@@ -6,4 +6,6 @@ include 'service-bookings'
 include 'service-users'
 
 include 'library-commons'
+include 'service-config'
+include 'service-register'
 

@@ -1,7 +1,6 @@
 package co.com.poli.movies.entities;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -29,7 +28,6 @@ public class Movie {
     @Column(name = "director")
     private String director;
 
-    @Range(min = 1, max = 5, message = "El rating debe estar entre 1 y 5")
     @Column(name = "rating")
     private Integer rating;
 
