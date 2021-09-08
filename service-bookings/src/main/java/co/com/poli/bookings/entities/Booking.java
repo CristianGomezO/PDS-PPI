@@ -1,6 +1,9 @@
 package co.com.poli.bookings.entities;
 
 
+import co.com.poli.bookings.models.Movie;
+import co.com.poli.bookings.models.Showtime;
+import co.com.poli.bookings.models.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,14 +30,22 @@ public class Booking {
     @Column(name = "userid", nullable = false)
     private Long userid;
 
+    @Transient
+    private User user;
+
     @NotEmpty(message = "El id de showtime no puede ser vacio")
     @Column(name = "showtimeid", nullable = false)
     private Long showtimeid;
+
+    @Transient
+    private Showtime showtime;
 
     @ElementCollection
     @Column(name = "movies_id")
     private List<Long> movies;
 
+    @Transient
+    private Movie movie;
 
     @Override
     public boolean equals(Object o) {

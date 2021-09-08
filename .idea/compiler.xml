@@ -13,6 +13,7 @@
         <module name="MultiProject-PPI.service-showtimes.main" />
         <module name="MultiProject-PPI.library-commons.main" />
         <module name="MultiProject-PPI.service-bookings.main" />
+        <module name="MultiProject-PPI.service-gateway.main" />
         <module name="MultiProject-PPI.service-config.main" />
         <module name="MultiProject-PPI.service-users.main" />
       </profile>
