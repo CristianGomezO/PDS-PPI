@@ -17,9 +17,8 @@ public class User {
 
     @Id
     @NotEmpty(message = "El nit/numero no puede ser vacio")
-    @Size(min = 8, message = "El tamaño del nit/numero debe ser minimo de 8")
-    @Column(name = "id", unique = true,nullable = false,updatable = false)
     private Long id;
+
 
     @NotEmpty(message = "El nombre no puede ser vacio")
     @Column(name="name")
