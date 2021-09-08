@@ -11,6 +11,7 @@
         <module name="MultiProject-PPI.service-movies.main" />
         <module name="MultiProject-PPI.library-commons.main" />
         <module name="MultiProject-PPI.service-bookings.main" />
+        <module name="MultiProject-PPI.service-config.main" />
         <module name="MultiProject-PPI.service-users.main" />
       </profile>
     </annotationProcessing>
