@@ -11,7 +11,7 @@ spring:
           password: Ppi-pds1
   security:
     user:
-      name: ${CONFIG_USER}
-      password: ${CONFIG_PASSWORD}
+      name: admin
+      password: admin
 server:
   port: 8000
