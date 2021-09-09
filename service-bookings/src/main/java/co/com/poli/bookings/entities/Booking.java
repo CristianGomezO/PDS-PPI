@@ -8,6 +8,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,15 +26,14 @@ public class Booking {
     @Column(name = "id", updatable = false, nullable = false, unique = true)
     private Long id;
 
-
-    @NotEmpty(message = "El id del usuario no puede ser vacio")
+    @NotNull(message = "El id del usuario no puede ser vacio")
     @Column(name = "userid", nullable = false)
     private Long userid;
 
     @Transient
     private User user;
 
-    @NotEmpty(message = "El id de showtime no puede ser vacio")
+    @NotNull(message = "El id de showtime  no puede ser vacio")
     @Column(name = "showtimeid", nullable = false)
     private Long showtimeid;
 
@@ -42,7 +42,7 @@ public class Booking {
 
     @ElementCollection
     @Column(name = "movies_id")
-    private List<Long> movies;
+    private List<Long> movies_id;
 
     @Transient
     private Movie movie;
