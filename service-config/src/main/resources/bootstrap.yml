@@ -6,7 +6,9 @@ spring:
     config:
       server:
         git:
-          uri: file:///K:/Profundizacion de desarrollo/config-data
+          uri: https://github.com/CristianGO1/config-server
+          username: CristianGO1
+          password: Ppi-pds1
   security:
     user:
       name: ${CONFIG_USER}
