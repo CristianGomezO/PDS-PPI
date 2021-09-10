@@ -24,7 +24,7 @@ public class MoviesRepositoryMockTest {
                     .build();
             movieRepository.save(movie);
             List<Movie> movies = movieRepository.findAll();
-            Assertions.assertThat(movies.size()).isEqualTo(2);
+            Assertions.assertThat(movies.size()).isEqualTo(1);
 
         }
 }

@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
-@SpringBootTest
+@DataJpaTest
 public class UserServiceMockTest {
 
     @Mock
@@ -31,6 +32,7 @@ public class UserServiceMockTest {
                 .name("prueba")
                 .lastName("apellido")
                 .build();
+
 
         Mockito.when(userRepository.findById(4L)).thenReturn(Optional.of(user));
     }
