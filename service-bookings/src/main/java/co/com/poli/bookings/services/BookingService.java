@@ -10,6 +10,6 @@ public interface BookingService {
     void delete(Booking booking);
     List<Booking> findAll();
     Booking findById(Long id);
-    Booking findByUserId(Long id);
+    Booking findByUserid(Long id);
     void updateBooking(Booking newBooking, Booking oldBooking);
 }

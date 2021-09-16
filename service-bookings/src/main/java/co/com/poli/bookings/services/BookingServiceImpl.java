@@ -94,9 +94,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Booking findByUserId(Long userid) {
-        Booking booking = bookingRepository.findByUserId(userid).orElse(null);
+    public Booking findByUserid(Long id) {
+        Booking booking = bookingRepository.findByUserid(id);
         ModelMapper modelMapper = new ModelMapper();
 
         User user = modelMapper.map(userClient.findById(booking.getUserid()).getData(), User.class);
@@ -113,10 +112,9 @@ public class BookingServiceImpl implements BookingService {
                     return movieItem;
                 }).collect(Collectors.toList());
 
-        return bookingRepository.findById(id).orElse(null);
+
+        return bookingRepository.findByUserid(id);
     }
-
-
 
 
 }

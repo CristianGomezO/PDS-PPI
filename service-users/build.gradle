@@ -21,6 +21,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.modelmapper:modelmapper:2.4.2'
 
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
     runtimeOnly 'com.h2database:h2'
 
     implementation project(':library-commons')

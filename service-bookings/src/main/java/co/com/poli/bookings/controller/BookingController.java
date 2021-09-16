@@ -54,9 +54,9 @@ public class BookingController {
         return builder.success(booking);
     }
 
-    @GetMapping("/{userid}")
+    @GetMapping("/userid/{userid}")
     public Response findByUserId(@PathVariable("userid") Long userid){
-        Booking booking = bookingService.findByUserId(userid);
+        Booking booking = bookingService.findByUserid(userid);
         if(booking == null){
             return builder.success(null);
         }
