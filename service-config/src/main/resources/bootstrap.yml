@@ -7,11 +7,11 @@ spring:
       server:
         git:
           uri: https://github.com/CristianGO1/config-server
-          username: ${GITHUB_USERNAME}
-          password: ${GITHUB_PASSWORD}
+          username: CristianGO1
+          password: Ppi-pds1
   security:
     user:
-      name: ${CONFIG_USER}
-      password: ${CONFIG_PASSWORD}
+      name: admin
+      password: admin
 server:
   port: 8000
