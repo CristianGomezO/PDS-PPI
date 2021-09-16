@@ -51,8 +51,8 @@ public class UserController {
         if(user == null){
             return builder.success(null);
         }
-        Booking booking = userService.findByUserId(user.getId());
-        if(booking != null){
+        String message = userService.findByUserId(user.getId());
+        if(message.equals("Tiene reservas asociadas")) {
             return builder.success("El usuario que intenta eliminar tiene reservaciones asociadas");
         }
         userService.delete(user);

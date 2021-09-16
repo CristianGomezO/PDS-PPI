@@ -11,5 +11,5 @@ public interface UserService {
     void delete(User user);
     List<User> findAll();
     User findById(Long id);
-    Booking findByUserId(Long userid);
+    String findByUserId(Long userid);
 }

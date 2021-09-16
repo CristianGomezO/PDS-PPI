@@ -2,10 +2,8 @@ package co.com.poli.users.services;
 
 import co.com.poli.users.clients.BookingClient;
 import co.com.poli.users.entities.User;
-import co.com.poli.users.models.Booking;
 import co.com.poli.users.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,13 +42,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional(readOnly = true)
-    public Booking findByUserId(Long userid) {
-        ModelMapper modelMapper = new ModelMapper();
+    public String findByUserId(Long userid) {
+        String message = "";
 
-        Booking booking = modelMapper.map(bookingClient.findByUserId(userid).getData(), Booking.class);
+        try {
+            if(bookingClient.findByUserId(userid).getStatus() == 200) {
+                message = "Tiene reservas asociadas";
+            }
+        }catch (Exception ex){
+            ex.getCause();
+        }
 
-        return booking;
+        return message;
     }
-
-
 }
