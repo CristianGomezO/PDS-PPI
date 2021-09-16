@@ -1,6 +1,7 @@
 package co.com.poli.users.controller;
 
 import co.com.poli.users.entities.User;
+import co.com.poli.users.models.Booking;
 import co.com.poli.users.services.UserService;
 import co.com.poli.commons.libraries.FormatMessage;
 import co.com.poli.commons.libraries.Response;
@@ -49,6 +50,10 @@ public class UserController {
         User user = userService.findById(id);
         if(user == null){
             return builder.success(null);
+        }
+        Booking booking = userService.findByUserId(user.getId());
+        if(booking != null){
+            return builder.success("El usuario que intenta eliminar tiene reservaciones asociadas");
         }
         userService.delete(user);
         return builder.success(user);
