@@ -65,6 +65,12 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Booking booking) {
+        bookingRepository.delete(booking);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public Booking findById(Long id) {
         Booking booking = bookingRepository.findById(id).orElse(null);
@@ -86,6 +92,31 @@ public class BookingServiceImpl implements BookingService {
 
         return bookingRepository.findById(id).orElse(null);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Booking findByUserId(Long userid) {
+        Booking booking = bookingRepository.findByUserId(userid).orElse(null);
+        ModelMapper modelMapper = new ModelMapper();
+
+        User user = modelMapper.map(userClient.findById(booking.getUserid()).getData(), User.class);
+        booking.setUser(user);
+
+        Showtime showtime =
+                modelMapper.map(showtimeClient.findById(booking.getShowtimeid()).getData(), Showtime.class);
+        booking.setShowtime(showtime);
+
+        List<Long> movieList = booking.getMovies_id().stream()
+                .map(movieItem -> {
+                    Movie movie = modelMapper.map(movieClient.findById(movieItem).getData(), Movie.class);
+                    booking.setMovie(movie);
+                    return movieItem;
+                }).collect(Collectors.toList());
+
+        return bookingRepository.findById(id).orElse(null);
+    }
+
+
 
 
 }

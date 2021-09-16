@@ -54,6 +54,25 @@ public class BookingController {
         return builder.success(booking);
     }
 
+    @GetMapping("/{userid}")
+    public Response findByUserId(@PathVariable("userid") Long userid){
+        Booking booking = bookingService.findByUserId(userid);
+        if(booking == null){
+            return builder.success(null);
+        }
+        return builder.success(booking);
+    }
+
+    @DeleteMapping("/{id}")
+    public Response delete(@PathVariable("id") Long id){
+        Booking booking = bookingService.findById(id);
+        if(booking == null){
+            return builder.success(null);
+        }
+        bookingService.delete(booking);
+        return builder.success(booking);
+    }
+
 
     @GetMapping()
     public Response findAll(){
